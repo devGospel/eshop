@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<!-- Boxicons -->
+	<link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
+	<!-- My CSS -->
+	<link rel="stylesheet" href="css/dashboard.css">
+
+	<title>Shopping Cart</title>
+</head>
+<body>
+
+
+	<!-- SIDEBAR-->
+	<section id="sidebar">
+		<a href="#" class="brand">
+			<i class='bx bxs-smile'></i>
+			<span class="text">Shopping Cart</span>
+		</a>
+		<ul class="side-menu top">
+			<li class="active">
+				<a href="#">
+					<i class='bx bxs-dashboard' ></i>
+					<span class="text">Cart</span>
+				</a>
+			</li>
+			<li>
+				<a href="/message">  
+					<i class='bx bxs-shopping-bag-alt' ></i>
+					<span class="text">Other categories</span>
+				</a>
+			</li>
+			<li>
+				<a href="#">
+					<i class='bx bxs-doughnut-chart' ></i>
+					<span class="text">Team</span>
+				</a>
+			</li>
+			<li>
+				<a href="/message">
+					<i class='bx bxs-message-dots' ></i>
+					<span class="text">Message</span>
+				</a>
+			</li>
+			<li>
+				<a href="#">
+					<i class='bx bxs-group' ></i>
+					<span class="text">Chat admin</span>
+				</a>
+			</li>
+		</ul>
+	 
+	</section>
+	<!-- SIDEBAR -->
+
+	 
+
+
+
+	<!-- CONTENT -->
+	<section id="content" >
+		<!-- NAVBAR -->
+		<nav>
+
+			<a href="/shopping-cart" class="notification" style=" margin-top: 15px;"  >
+                <p style="padding: 5px; background-color: #3C91E6; border-radius: 20px; color: aliceblue; font-weight: 600;">Shopping Cart</p> 
+				 
+			</a>
+
+
+			<i class='bx bx-menu' ></i>
+			<p  class="nav-link" style="color: #f66666; font-weight: 600;">Close sidebar</p>
+			<%- include('./partials/search'); -%>
+
+			<input type="checkbox" id="switch-mode" hidden>
+			<label for="switch-mode" class="switch-mode"></label>
+	 
+		</nav>
+		<!-- NAVBAR -->
+
+		<!-- MAIN --> 
+		<main>
+			<div class="head-title">
+				<div class="left">
+					<h1>Cart</h1>
+					<ul class="breadcrumb">
+						<li>
+							<p>Your shopping cart. View items and pay</p>
+							<p>Also view previous carts and payments</p>
+						</li>
+						<li><i class='bx bx-chevron-right' ></i></li>
+						<li>
+							<a class="active" href="#">Home</a>
+						</li>
+					</ul>
+				</div>
+				<a href="#" class="btn-download">
+					<i class='bx bxs-cloud-download' ></i>
+					<span class="text">Download PDF</span>
+				</a>
+			</div>
+
+			<% if (products) { %>
+
+			<ul class="box-info">
+			 
+				<li>
+					<i class='bx bxs-group' ></i>
+					<span class="text" >
+						<h3><%= totalQty %></h3>
+						<h3 style="color: green; font-weight: 600;"> Quantity </h3>
+					
+					</span>
+				</li>
+				<li>
+					<i class='bx bxs-dollar-circle' ></i>
+					<span class="text">
+						<h3>N <%= totalPrice %></h3>
+						<h3 style="color: red; font-weight: 600;"> Cart total</h3>
+					</span>
+					
+
+				</li>
+				<a href="/checkout"> <button class="btnLogin-popup"> Pay now </button></a>
+
+				<form action="/clearCart" method="post">
+				 <button class="btnLogin-popup" style="color: white; background: red;" onclick="alert('Cart cleared!')"> Clear cart </button>
+				</form>
+			</ul>
+
+
+			<div class="table-data">
+				<div class="order">
+					<div class="head">
+						<h3>Recent Orders</h3>
+						<i class='bx bx-search' ></i>
+						<i class='bx bx-filter' ></i>
+					</div>
+					<table>
+						<thead>
+							<tr>
+								<th>User</th>
+								<th>Date Order</th>
+								<th>Status</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>
+									<img src="img/people.png">
+									<p>John Doe</p>
+								</td>
+								<td>01-10-2021</td>
+								<td><span class="status completed">Completed</span></td>
+							</tr>
+							<tr>
+								<td>
+									<img src="img/people.png">
+									<p>John Doe</p>
+								</td>
+								<td>01-10-2021</td>
+								<td><span class="status pending">Pending</span></td>
+							</tr>
+							<tr>
+								<td>
+									<img src="img/people.png">
+									<p>John Doe</p>
+								</td>
+								<td>01-10-2021</td>
+								<td><span class="status process">Process</span></td>
+							</tr>
+							<tr>
+								<td>
+									<img src="img/people.png">
+									<p>John Doe</p>
+								</td>
+								<td>01-10-2021</td>
+								<td><span class="status pending">Pending</span></td>
+							</tr>
+							<tr>
+								<td>
+									<img src="img/people.png">
+									<p>John Doe</p>
+								</td>
+								<td>01-10-2021</td>
+								<td><span class="status completed">Completed</span></td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+  
+             
+           
+				<div class="todo">
+					<div class="head">
+						<h1 style="color: #f66666;">Cart items</h1>
+						<i class='bx bx-plus' ></i>
+						<i class='bx bx-filter' ></i>
+					</div>           
+
+                    <% products.forEach(item => { %>
+						<ul class="todo-list">
+						<li>  
+                            <h1 style="color: #3C91E6;"> <%= item.name %> </h1>
+							<p> <b> Quantity: <%= item.qty %> </b> </p>
+							<p>  Price: N<%= item.price %></p>
+							<i class='bx bx-dots-vertical-rounded' ></i>
+				 
+							<br>
+						 
+                        </li>
+						</ul>
+                    <% }) %>
+							
+						    
+					       
+                         
+                            
+
+							 <% } else { %>
+                                <h1> No Products in your cart</h1>  
+                                <% } %>
+
+
+
+
+			 
+
+							</div>
+                
+
+				</div>              
+		</main>
+		<!-- MAIN -->
+
+	 
+	</section>
+	<!-- CONTENT -->
+	
+
+
+	<script src="/scripts/dashboard.js"></script>
+</body>
+<%- include('./partials/footer'); -%>
+</html> 

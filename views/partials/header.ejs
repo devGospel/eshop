@@ -1,0 +1,12 @@
+<header>
+    <link rel="stylesheet" href ="/css/style.css">
+    <h2 class="logo"> Logo </h2>
+    <nav class="navigation">
+        <a href="/" class=" <%= isActiveRoute('/', currentRoute) %>"> Home </a>
+        <a href="/about" class=" <%= isActiveRoute('/about', currentRoute) %>"> About </a>
+        <a href="/services" class=" <%= isActiveRoute('/services', currentRoute) %>"> Services </a>
+        <a href="/contact" class=" <%= isActiveRoute('/contact', currentRoute) %>"> Contact </a>
+        <a href="/shop" class=" <%= isActiveRoute('/shop', currentRoute) %>"> Shop </a>
+
+    </nav>
+</header>

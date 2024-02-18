@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Orders</title>
+    <link rel="stylesheet" href="../css/style.css">
+
+ 
+
+</head>
+<body  style="background: none; background-color:   #eee;" >
+
+   
+    <div class="product-wrapper" style="height: 750px">
+       
+        <div class="form-box" style="margin-top: 20px; ;">
+
+            <h2 style="color: #3C91E6"> Send Order</h2>
+
+       
+            
+            <div class="input-box" style="border: none; text-align: center; ">
+                <input type="text"  name="name" value="<%= name %>" readonly style="color: forestgreen; font-size: 30px;">
+                  
+            </div>
+            
+            
+            
+                <input type="hidden"  name="productId" value="<%= productId %>" required>
+
+                <div class="input-box" style="height: 50px; border-radius: 30px;" >
+                    <input type="text" name="address" required style="padding-left: 50px; ">
+                    <label for="address"> <b>Address</b></label> 
+                </div>
+
+                <div class="input-box" style="height: 50px; border-radius: 30px;">
+                    <input type="text" name="phone" required style="padding-left: 50px;">
+                    <label for="phone"> <b>Phone</b>  </label>
+                </div>
+
+            
+                <div class="input-box" style="height: 80px; border-radius: 30px;" >
+                    <span style="padding-left: 50px;"><b>Status</b></span>
+                     <input type="text" name="status" value="pending" readonly style="color: crimson; border: none;padding-left:50px;" >  
+                 </div> 
+            
+                <input type="hidden" name="userId" value="<%= userId %>" required> 
+                <input type="hidden"  name="totalPrice"  value= "<%= totalPrice %>" required >   
+            
+            <button type="submit" class="btn" style="height: 50px; background-color: #3C91E6"> Order </button>
+ 
+    </div>
+    </div>
+
+</body>
+</html>

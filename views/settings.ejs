@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Store</title>
+    <link rel="stylesheet" href="../css/store.css">
+</head>
+<body>
+
+    <header class="header-bar">
+        <h1> ORDERS </h1>
+
+    </header>
+
+    <div class="store-div">
+
+
+        <% foundCategories.forEach(category => { %>
+
+            <div class="input-box">
+                <label for="name"> <b>Category Name</b></label>        
+             <%= category.name %>
+            </div>
+
+            <div class="input-box"> 
+                <label for="icon"> <b> Category Icon</b></label>       
+                <%= category.icon %>
+            </div>
+
+            <div class="input-box"> 
+                <label for="color"> Category Color</label>       
+                <%= category.color %>
+               </div>
+            <% }) %>
+
+
+
+
+
+
+    <table>
+        <tr>
+            <th> <b>Product Name</b></th>
+            <th> <b>Description </b> </th>
+            <th> <b>Rich Description</b> </th>
+            <th> <b>Image</b> </th>
+            <th> <b>Images</b> </th>
+            <th> <b>Brand </b> </th>
+            <th> <b>Price</b> </th>
+            <th> <b>Category</b> </th>
+            <th> <b>Count In Stock</b> </th>
+            <th> <b>User</b> </th>
+            <th> <b>Rating</b> </th>
+            <th> <b>Reviews</b> </th>
+            <th> <b>Featured</b> </th>
+            <th> <b>Date</b> </th>
+
+        </tr>
+
+
+
+        <% foundProducts.forEach(prod => { %>
+         
+       
+            <tr>
+                <td> <%= prod.productName %> </td>
+                <td> <%= prod.description %> </td>
+                <td> <%= prod.image %> </td>
+                <td> <%= prod.images %> </td>
+                <td> <%= prod.brand %> </td>
+                <td> <%= prod.price %> </td>
+                <td> <%= prod.category %> </td>
+                <td> <%= prod.countIntStock %> </td>
+                <td> <%= prod.user %> </td>
+                <td> <%= prod.rating %> </td>
+                <td> <%= prod.numReviews %> </td>
+                <td> <%= prod.isFeatured %> </td>
+                <td> <%= prod.dateCreated.toDateString() %> </td>
+            </tr>
+            
+                <% }) %-->
+            
+
+
+    </table>
+
+
+    
+
+
+
+    <div class="store-div">
+        <form action="/order" method="post">
+
+            <div class="input-box">
+                <input type="text" name=" shippingAddress1" required>
+                <label for=" shippingAddress1">  Shipping Address 1</label>
+                
+            </div>
+
+            <div class="input-box">
+                <input type="text" name=" shippingAddress2" required>
+                <label for=" shippingAddress2">  Shipping Address 2 </label>
+               
+            </div>
+            
+            <div class="input-box">
+                <input type="text" name="city" required>
+                <label for="city"> City</label>
+                
+            </div>
+
+            <div class="input-box">
+                <input type="number" name="zip" required>
+                <label for=""> Zip Code </label>
+               
+            </div>
+            <div class="input-box">
+                <input type="text" name="country" required>
+                <label for="country"> Country</label>
+                
+            </div>
+
+            <div class="input-box">
+                <input type="text" name="phone" required>
+                <label for="phone"> Phone  </label>
+            </div>
+
+            <div class="input-box">
+                <input type="text" name="status" required>
+                <label for="status"> Status </label>
+            </div>
+
+            <div class="input-box">
+                <input type="number" name="totalPrice" required>
+                <label for="totalPrice">Total Price </label>
+            </div>
+            <div class="input-box">
+                <input type="date" name="dateOrdered" required>
+                <label for="dateOrdered">  </label>
+            </div>
+
+            <button type="submit" class="btn"> Order </button>
+
+        </form>
+    </div>
+
+
+
+     						<% for( let category of categories ) { %>
+							<li class="not-completed">
+					
+							 
+								<a href='/product-by-category/:categoryId'> <span>   <p style="color: #FD7238">  <b>  <%= category.name %></b> </p>  </span> </a> 
+							</li>
+							
+							
+						<% } %>
+      
+
+
+ 
+    
+    </table>
+    
+    </div>
+</body>
+</html>
+
+
+
+
+
+<div class="table-data">
+				<div class="order">
+					<div class="head">
+						<h3>Recent Orders</h3>
+						<i class='bx bx-search' ></i>
+						<i class='bx bx-filter' ></i>
+					</div>
+					<table>
+						<thead>
+							<tr>
+								<th>Name</th>
+								<th>Description</th>
+								<th>Image</th>
+								<th>Price</th>
+								<th>Date</th>
+							</tr>
+						</thead>
+						<tbody>
+							<% productList.forEach(prod => { %>
+								<form action="/order" method="post">
+
+							<tr>
+								<td> <h3  ><%= prod.name %></h3> </td>
+								<td> <p > <%= prod.description %></p> </td>	
+								<td> <p style="color: #DB504A;"> $ <%= prod.price %> </p> </td>	
+								<td>	<img src="<%= prod.image %> " alt="<%= prod.name %>" style="border-radius: 30px;">	</td>
+								<td>	<p style="color: #3C91E6;">  <%= prod.dateCreated.toDateString() %></p>  </td>
+								 							
+							
+
+							
+								<input type="hidden" value=" <%= prod.name %>" name="name">	
+								<input type="hidden" value=" <%= prod._id %>" name="productId">	
+								<input type="hidden" value=" <%= prod.price %>" name="totalPrice">
+                                <td> <button type="submit" style="font-weight: 600; padding: 20px;color: aliceblue; background: #3C91E6; border: none; border-radius: 20px;"> ORDER </button>		 				</td>
+								 						
+							 	</form>
+                            </tr>
+					
+
+							<% }) %>
+						 
+						</tbody>
+					</table>
+				</div>
+				 
+				</div>
+			</div>
+		

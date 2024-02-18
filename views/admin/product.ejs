@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Store</title>
+	<link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="../css/dashboard.css">
+</head>
+<body>
+
+ 
+
+    <!-- SIDEBAR-->
+	<section id="sidebar">
+		<a href="#" class="brand">
+			<i class='bx bxs-smile'></i>
+			<span class="text"> Products</span>
+		</a>
+		<ul class="side-menu top">
+			<li class="active">
+				<a href="#">
+					<i class='bx bxs-dashboard' ></i>
+					<span class="text">Products</span>
+				</a>
+			</li>
+ 
+	 
+			<li>
+				<a href="/message">
+					<i class='bx bxs-message-dots' ></i>
+					<span class="text">Message</span>
+				</a>
+			</li>
+			<li>
+				<a href="/orderItem">
+					<i class='bx bxs-group' ></i>
+					<span class="text">Order Item</span>
+				</a>
+			</li>
+		</ul>
+		<ul class="side-menu">
+			<li>
+				<a href="#">
+					<i class='bx bxs-cog' ></i>
+					<span class="text">Settings</span>
+				</a>
+			</li>
+
+			<form action="/logout" method="post">
+				<li>
+					<a href="/" class="logout">
+						<i class='bx bxs-log-out-circle' ></i>
+						<span class="text">Logout</span>
+					</a>
+				</li>
+			</form>
+			
+		</ul>
+	</section>
+	<!--SIDEBAR -->
+
+
+
+
+    <!-- CONTENT -->
+	<section id="content">
+		<!-- NAVBAR -->
+		<nav>
+			<i class='bx bx-menu' ></i>
+	 
+			<%- include('../partials/search'); -%>
+
+
+			
+			
+			<input type="checkbox" id="switch-mode" hidden>
+			<label for="switch-mode" class="switch-mode"></label>
+			<a href="#" class="notification">
+				<p style="padding: 5px; background-color: #3C91E6; border-radius: 20px; color: aliceblue; font-weight: 600;"> Products</p> 
+				<span class="num"><%= productList.length %></span>  
+			</a>
+			<a href="#" class="profile">
+				<img src="img/people.png">
+			</a>
+		</nav>
+		<!-- NAVBAR -->
+
+		<!-- MAIN --> 
+		<main>
+			<div class="head-title">
+				<div class="left">
+					<h1>Products</h1>
+					<ul class="breadcrumb">
+						<li>
+							<a href="/dashboard">Products in your store</a>
+						</li>
+						<li><i class='bx bx-chevron-right' ></i></li>
+						<li>
+							<a class="active" href="#">Home</a>
+						</li>
+					</ul>
+				</div>
+				
+
+			
+				<a href="/addProduct"> <button class="btnLogin-popup"> Add Product </button></a>
+
+			 
+			</div>
+   </div>
+
+    </div>
+
+
+
+
+
+
+<div class="container">
+	<div class="list"  >
+		<% productList.forEach((product) => { %>
+		 
+		<div class="item">
+			<img src="<%= product.image %>" alt="">
+
+			<div class="title">
+				<%= product.name %>
+
+			</div>
+			<div class="price">
+				<%= product.price %>
+			</div>
+			<p style="color: #3C91E6;">  <%= product.dateCreated.toDateString() %></p>
+						 							 
+
+							<div style="padding: 30px;"> 
+								<a href="/editProduct/<%= product._id %>" style=" font-weight: 600; padding: 15px;color: aliceblue; background: grey; border: none; border-radius: 20px; font-size: 15px;"> EDIT</a>
+							</div>
+						
+							<form action="/deleteProduct/<%= product._id  %>" method="post">
+									 
+								 <button type="submit" onclick="confirm('Delete product?')" style="font-weight: 600; padding: 10px;color: aliceblue; background: red; border: none; border-radius: 20px; width: 100px; font-family: Poppins; font-size: 15px;"> DELETE </button>
+							</form>
+						 
+
+		</div>
+
+		<% }) %>
+	</div>
+
+
+	
+	
+	
+	</div>
+
+</body>
+
+
+
+
+
+
+
+	<script src="/scripts/dashboard.js"></script>
+
+</html>
+
+
+
+
+
+
+
+
+
+ 

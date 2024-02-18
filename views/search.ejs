@@ -1,0 +1,21 @@
+<link rel="stylesheet" href="css/search.css" rel="stylesheet">
+<div class="author">
+    <h1 class="author__heading"> Search Results</h1>
+</div>
+
+<section class="articles">
+    <!-- <h2 class="articles__heading">Latest Posts </h2> -->
+
+  
+    <ul class="article-ul">
+        <% foundProducts.forEach(product => { %>
+        <li>
+        <a  href="/search/<%= product._id %>">
+            <span><%= product.name %></span>
+            <span class="article-list__date"><%= product.dateCreated.toDateString() %></span>
+            <img src="<%= product.image %>" alt="<%= product.name %> " style="border-radius: 30px;">
+        </a>
+        </li>
+        <% }) %>
+    </ul>
+    

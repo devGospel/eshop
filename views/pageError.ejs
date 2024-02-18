@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href ="/css/style.css">
+    <title> Page Error</title>
+
+</head>
+
+
+<header>
+   
+    <link rel="stylesheet" href ="/css/style.css">
+    <h2 class="logo"> Logo </h2>
+    <nav class="navigation">
+        <a href="/"> Home </a>
+        <a href="/about"> About </a>
+        <a href="/services"> Services </a>
+        <a href="/contact"> Contact </a>
+
+       <a href="/">Login</a>
+
+    </nav>
+
+</header>
+
+
+<body style="display: block; text-align: center;">
+
+    <div style="position: fixed; top: 30%; left: 35%; ">
+
+        <h1 style="font-size: 70px; color: red;"> Oops, page error</h1>  <br>
+ 
+        <h2> <%= error %></h2>
+
+    </div>
+
+ 
+</body>
+<div class="footer-container" style="position: fixed; bottom: 0; align-items: center; left: 40%; ">
+    <%- include('./partials/footer'); -%>
+</div>
+
+
+</html>

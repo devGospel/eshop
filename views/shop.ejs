@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shop</title>
+    <link rel="stylesheet" href="css/shop.css">
+</head>
+
+
+
+<body style="margin-top: 70px;">
+    
+    <div class="container">
+        <header>
+            <h1> Featured dishes</h1>
+            <div class="shopping">
+                <img src="img/shopping.svg">
+                <span class="quantity"> 0  </span>
+            </div>
+        </header>
+
+
+     
+      
+
+        <div class="list">
+
+            <% products.forEach((product, key) => { %>
+
+                <div class="item">
+                    <img src="<%= product.image %>" alt="">
+
+                    <div class="title">
+                        <%= product.name %>
+                    </div>
+
+                    <div class="price">
+                        <%= product.price %>
+                    </div>
+                    <button onclick="addToCard(key)">Add To Card</button>
+                </div>
+             
+            <% }) %>
+          
+         
+
+        </div>
+ 
+
+
+    </div>
+    <div class="card">
+        <h1>Card</h1>
+        <ul class="listCard">
+
+            <% if (listCards != null) { %>
+
+            <%  listCards.forEach((value, key)=>{ %>                     
+           <li> 
+                <div> <img src="<%= value.image %>"  alt=""> </div>
+                <div><%= value.name %> </div>
+                <div> $<%=value.price.toLocaleString()%></div>
+
+                <div>
+                    <button onclick="">-</button>
+                    <div class="count">0</div>
+                    <button onclick="">+</button>
+                </div>
+           </li> 
+            <% }) %>
+            <% } %>
+            
+
+        </ul>
+        <div class="checkOut">
+            <div class="total">  </div>
+            <div class="closeShopping">Close</div>
+        </div>
+    </div>
+ 
+</body>
+
+<script src="/scripts/app.js"> </script> 
+
+</html> 

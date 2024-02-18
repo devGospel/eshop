@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="/css/dashboard.css">
+
+	<!-- Boxicons -->
+	<link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
+	<!-- My CSS -->	 
+
+	<title><%= category.name %> </title>
+</head>
+<body>
+      
+		<!-- SIDEBAR-->
+<section id="sidebar">
+
+	<a href="#" class="brand">
+		<i class='bx bxs-smile'></i>
+		<span class="text" style="text-transform: capitalize;"> Menu </span>
+	</a>
+	
+	<ul class="side-menu top">
+
+		<li class="active">
+			<a href="#">
+				<i class='bx bxs-dashboard' ></i>
+				<span class="text"><%= category.name %></span>
+			</a>
+		</li>
+		<% categories.forEach(category => { %>
+		<li>
+			<a href="/product-by-category/<%= category._id %>/<%= user._id %>">
+				<span class="text"> <%= category.name %></span>
+			</a>
+		</li>
+		<% }) %>
+	</ul> 
+	<ul class="side-menu">
+		<form action="/logout" method="post">
+			<li>
+				<a href="/" class="logout">
+					<i class='bx bxs-log-out-circle' ></i>
+					<span class="text">Logout</span>
+				</a>
+			</li>
+		</form>
+	 
+		
+	</ul>
+
+		
+	
+	
+</section>
+<!--SIDEBAR -->
+
+
+ <!-- CONTENT -->
+ <section id="content">
+	<!-- NAVBAR -->
+	<nav>
+		<i class='bx bx-menu' ></i>
+		 
+		
+		<%- include('./partials/search'); -%>
+
+
+		<input type="checkbox" id="switch-mode" hidden>
+		<label for="switch-mode" class="switch-mode"></label>
+ 
+	</nav>
+	<!-- NAVBAR -->
+
+	<!-- MAIN --> 
+	<main>
+		<div class="head-title">
+			<div class="left">
+				<h1 style="text-transform: capitalize;"><%= category.name %></h1>
+				<ul class="breadcrumb">
+					<li>
+						<a href="#">Product details</a>
+					</li>
+					<li><i class='bx bx-chevron-right' ></i></li>
+ 
+						<li>
+							<a class="active" href="#">View and add to cart</a>
+						</li>
+				</ul>
+			</div>
+	 
+		</div>
+	 	
+		<% if (productList) { %>
+		 
+	
+
+			<div class="container">
+				<div class="list"  >
+					<% productList.forEach((product) => { %>
+						<div class="item">
+							<img src="<%= product.image %>" alt="">
+
+									<div class="title">
+										<%= product.name %>
+									</div>
+									<div class="price">
+										<%= product.price %>
+
+							</div>
+								<p style="color: #3C91E6;">  <%= product.dateCreated.toDateString() %></p>							
+									<form action="/order" method="post">
+
+											<input type="hidden" value=" <%= product.name %>" name="name">	
+											<input type="hidden" value=" <%= product._id %>" name="productId">	
+											<input type="hidden" value=" <%= product.price %>" name="totalPrice">
+				
+											<input type="hidden" value="<%= userId %>" name="userId">
+										
+										<!-- <button type="submit"  style="font-weight: 600; padding: 20px;color: aliceblue; background: #3C91E6; border: none; border-radius: 20px;"> ORDER </button>	 -->
+										<div style="padding: 30px;"> 
+										<a href="/addToCart/<%= product._id %>" onclick="alert('Product added to cart!'); " style=" font-weight: 600; padding: 10px;color: aliceblue; background: grey; border: none; border-radius: 20px;"> ADD TO CART</a>
+									</div>	
+							</form>
+						</div>
+					<% }) %>
+				</div>
+			</div>
+
+				<% } else { %>
+
+					<h1> No Products displayed, check later </h1>
+
+				 
+
+					<% } %>
+				 
+			
+
+		 
+	</main>
+	<!-- MAIN -->
+</section>
+<!-- CONTENT -->
+
+</body>
+</html>
