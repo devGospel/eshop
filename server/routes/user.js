@@ -211,7 +211,7 @@ router.post('/forgot-password', (req, res) => {
     }
   });
      console.log(link);
-    res.render("index", {message: "'Password reset link has been sent to your email...'"})  
+    res.render("blank", {message: "'Password reset link has been sent to your email...'"})  
     
   })
   } catch (error) {
